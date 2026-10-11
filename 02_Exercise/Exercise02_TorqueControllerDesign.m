@@ -18,15 +18,15 @@ r_GB            = Parameter.Turbine.r_GB;
 eta_el          = Parameter.Generator.eta_el;
 
 % select design values
-lambda_opt      = NaN;                              % [-]               Please adjust!
-theta_opt       = NaN;                              % [rad]             Please adjust!
+lambda_opt      = 7.55;                              % [-]               Please adjust!
+theta_opt       = 0;                              % [rad]             Please adjust!
 
 % determine optimal power coefficient 
 c_P             = Parameter.Turbine.SS.c_P;
-c_P_opt         = NaN;                              % [-]               Please adjust!
+c_P_opt         = interp2(theta,lambda,c_P,theta_opt,lambda_opt);                              % [-]               Please adjust!
 
 % Region 2: determine k
-k               = NaN;                              % [Nm/(rad/s)^2]    Please adjust!
+k               = 0.5*rho*pi*R^5*c_P_opt/lambda_opt^3*r_GB^3;                              % [Nm/(rad/s)^2]    Please adjust!
 
 % Region 3: determine M_g_rated
 P_el_rated      = 5e6;                              % [W]
