@@ -6,7 +6,7 @@ clearvars;close all;clc;
 
 %% Preprocessing SLOW
 % Define parameter (turbine and controller)
-Parameter                       = NREL5MWDefaultParameter_SLOW1DOF.m;  
+Parameter                       = NREL5MWDefaultParameter_SLOW1DOF();  
 
 % internal parameters to make code easier to read 
 eta_el                          = Parameter.Generator.eta_el;
