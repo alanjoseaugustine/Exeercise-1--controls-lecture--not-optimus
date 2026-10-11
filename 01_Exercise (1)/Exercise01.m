@@ -13,7 +13,7 @@ eta_el                          = Parameter.Generator.eta_el;
 r_GB                            = Parameter.Turbine.r_GB;
 
 % manual control
-theta                           = 0;                    % constant pitch for 16 m/s TODO!!!
+theta                           = deg2rad(17.4);                    % constant pitch for 16 m/s TODO!!!
 P_el_rated                      = 5e+006;
 Omega_g_rated                   = 12.1*2*pi/60;            %rpm converted to rad/s
 M_g                             = P_el_rated/(Omega_g_rated*r_GB*eta_el);                    % constant torque for 16 m/s TODO!!!
@@ -45,7 +45,7 @@ TimeRatio   = TMax/toc;
 
 %% PostProcessing SLOW
 Omega       = x(:,1);                       % rotor speed is 1st state
-P_el        = M_g*Omega_g_rated*r_GB*eta_el;                            % electrical power TODO!!! 
+P_el        = M_g*Omega*r_GB*eta_el;                            % electrical power TODO!!! 
 
 %% Compare Results
 fprintf('Time Ratio SLOW (Sim/CPU): %f\n',TimeRatio)
