@@ -28,7 +28,7 @@ t           = 0:dt:TMax;        % time vector
 n           = length(t);        % number of simulation steps
 
 % Define disturbance (wind signal)
-v_0         = interp1([0,60],[16 16],t);          % rotor effective wind speed at every simulation step
+v_0         = interp1([0,60],[20 20],t);          % rotor effective wind speed at every simulation step
 
 %% Processing SLOW
 % initial values (from FAST simulation)
