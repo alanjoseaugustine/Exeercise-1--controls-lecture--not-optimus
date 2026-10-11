@@ -14,9 +14,9 @@ r_GB                            = Parameter.Turbine.r_GB;
 
 % manual control
 theta                           = 0;                    % constant pitch for 16 m/s TODO!!!
-P_el_rated                      = 0;
-Omega_g_rated                   = 0;
-M_g                             = 0;                    % constant torque for 16 m/s TODO!!!
+P_el_rated                      = 5e+006;
+Omega_g_rated                   = 12.1*2*pi/60;            %rpm converted to rad/s
+M_g                             = P_el_rated/(Omega_g_rated*r_GB*eta_el);                    % constant torque for 16 m/s TODO!!!
 
 % Aerodynamics
 Parameter.AD                    = load('PowerAndThrustCoefficientsNREL5MW','c_P','c_T','lambda','theta'); % Actuator Disc Parameter Region 2
@@ -33,7 +33,7 @@ v_0         = interp1([0,60],[16 16],t);          % rotor effective wind speed a
 %% Processing SLOW
 % initial values (from FAST simulation)
 x           = NaN(n,1);         % allocation of state vector
-x(1,1)      = 12.1/60*2*pi;     % rotor speed               [rad/s]
+x(1,1)      = 12.1/60*2*pi;     % rotor speed               [rad/s],, matlab evaluates from left and right so my expression is also correct for rotor speed conversion.
 
 % simulation using Euler forward
 tic
@@ -45,7 +45,7 @@ TimeRatio   = TMax/toc;
 
 %% PostProcessing SLOW
 Omega       = x(:,1);                       % rotor speed is 1st state
-P_el        = 0;                            % electrical power TODO!!! 
+P_el        = M_g*Omega_g_rated*r_GB*eta_el;                            % electrical power TODO!!! 
 
 %% Compare Results
 fprintf('Time Ratio SLOW (Sim/CPU): %f\n',TimeRatio)
