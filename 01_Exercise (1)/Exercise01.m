@@ -13,10 +13,10 @@ eta_el                          = Parameter.Generator.eta_el;
 r_GB                            = Parameter.Turbine.r_GB;
 
 % manual control
-theta                           = deg2rad(17.4);                    % constant pitch for 16 m/s TODO!!!
+theta                           = deg2rad(0);                    % constant pitch for 16 m/s TODO!!!
 P_el_rated                      = 5e+006;
 Omega_g_rated                   = 12.1*2*pi/60;            %rpm converted to rad/s
-M_g                             = P_el_rated/(Omega_g_rated*r_GB*eta_el);                    % constant torque for 16 m/s TODO!!!
+M_g                             = 0 %P_el_rated/(Omega_g_rated*r_GB*eta_el);                    % constant torque for 16 m/s TODO!!!
 
 % Aerodynamics
 Parameter.AD                    = load('PowerAndThrustCoefficientsNREL5MW','c_P','c_T','lambda','theta'); % Actuator Disc Parameter Region 2
@@ -28,7 +28,7 @@ t           = 0:dt:TMax;        % time vector
 n           = length(t);        % number of simulation steps
 
 % Define disturbance (wind signal)
-v_0         = interp1([0,60],[20 20],t);          % rotor effective wind speed at every simulation step
+v_0         = interp1([0,60],[16 16],t);          % rotor effective wind speed at every simulation step
 
 %% Processing SLOW
 % initial values (from FAST simulation)

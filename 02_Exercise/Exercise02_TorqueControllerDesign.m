@@ -31,7 +31,7 @@ k               = 0.5*rho*pi*R^5*c_P_opt/lambda_opt^3*r_GB^3;                   
 % Region 3: determine M_g_rated
 P_el_rated      = 5e6;                              % [W]
 Omega_g_rated   = rpm2radPs(12.1*97);               % [rad/s]
-M_g_rated       = NaN;                              % [Nm]              Please adjust!
+M_g_rated       = P_el_rated/Omega_g_rated;                              % [Nm]              Please adjust!
 
 % region limits & region parameters based on Jonkman 2009
 Omega_g_1To1_5  = rpm2radPs(670);                   % [rad/s]
