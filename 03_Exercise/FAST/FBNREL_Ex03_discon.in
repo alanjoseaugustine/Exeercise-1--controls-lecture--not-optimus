@@ -1,0 +1,27 @@
+*******************************************************************
+* Baseline controller for the NREL 5MW reference wind turbine 
+* Based on controller of Jason Jonkman 
+* For Exercise 03 of Master Course 
+* Controller Design for Wind Turbines and Wind Farms 
+* Compiled for FAST 32 bit 
+* Communication Interval fixed to: 0.0125 s!
+*******************************************************************
+Parameter.VSC.k              = 2.3232
+Parameter.VSC.theta_fine     = 0.017453
+Parameter.VSC.Mode           = 1
+Parameter.VSC.M_g_rated      = 43093.5515
+Parameter.VSC.P_a_rated      = 5296610.1695
+Parameter.VSC.Omega_g_1To1_5 = 70.1622
+Parameter.VSC.Omega_g_1_5To2 = 91.2109
+Parameter.VSC.Omega_g_2To2_5 = 120.522
+Parameter.VSC.Omega_g_2_5To3 = 122.9096
+Parameter.VSC.a_1_5          = 918.2298
+Parameter.VSC.b_1_5          = -64425.0533
+Parameter.VSC.a_2_5          = 3915.2643
+Parameter.VSC.b_2_5          = -438129.9244
+Parameter.CPC.GS.theta       = [0.066817     0.21044     0.30498        0.39]
+Parameter.CPC.GS.kp          = [0    0    0    0]
+Parameter.CPC.GS.Ti          = [1    1    1    1]
+Parameter.CPC.Omega_g_rated  = 122.9096
+Parameter.CPC.theta_max      = 1.5708
+Parameter.CPC.theta_min      = 0
