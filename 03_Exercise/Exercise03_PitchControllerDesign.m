@@ -25,16 +25,21 @@ for iOP = 1:nOP
     
     % Get operation point
     v_0_OP      = OPs(iOP);
-    Omega_OP    = NaN; % please adjust
-    theta_OP    = NaN; % please adjust
+    Omega_OP    = interp1(SteadyStates.v_0,SteadyStates.Omega,v_0_OP); % please adjust
+    theta_OP    = interp1(SteadyStates.v_0,SteadyStates.theta,v_0_OP); % please adjust
 
     % Linearize at each operation point
     [A,B,C,D]   = LinearizeSLOW1DOF_PC(theta_OP,Omega_OP,v_0_OP,Parameter); 
     
+    a=A;
+    b=B(1);
+    c=C;
+
     % Determine theta, kp and Ti for each operation point
-    kp(iOP)     = NaN; % please adjust
-    Ti(iOP)     = NaN; % please adjust
-    theta(iOP)  = NaN; % please adjust
+    kp(iOP)     = -(2*D_d*omega_d+a)/(b*c); % please adjust
+    Ki=-(omega_d^2)/(b*c);
+    Ti(iOP)     = kp(iOP)/Ki; % please adjust
+    theta(iOP)  = theta_OP; % please adjust
 end
 
 fprintf('Parameter.CPC.GS.theta                  = [%s];\n',sprintf('%f ',theta));
