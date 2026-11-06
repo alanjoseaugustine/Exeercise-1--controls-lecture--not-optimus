@@ -48,8 +48,9 @@ Parameter.VSC.a_2_5                     = (Parameter.VSC.M_g_rated-Parameter.VSC
 Parameter.VSC.b_2_5                     = Parameter.VSC.M_g_rated-Parameter.VSC.a_2_5*Parameter.VSC.Omega_g_2_5To3;
 
 %% Filter Generator Speed
-Parameter.Filter.LowPass.Enable         = 0;
-Parameter.Filter.LowPass.f_cutoff       = 0.5;                              % [Hz]
+Parameter.Filter.LowPass.Enable         = 1;                                 % changed to 1 from 0 to enable low pass filter
+%Parameter.Filter.LowPass.f_cutoff       = 0.5;                              % [Hz] 
+Parameter.Filter.LowPass.f_cutoff       = 0.061;                             % calculated by myself since gain needs to be 0.1
 
 r_GB                                                    = 97;               % [-]
 Parameter.Filter.DynamicNotchFilter1.Enable             = 0;                % [-]
